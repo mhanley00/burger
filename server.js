@@ -1,29 +1,30 @@
 // ______________________________________________________________________________
 // DEPENDENCIES - npm packages + database
 // -----–––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
-const express = require("express");
-const mysql = require("mysql");
+const express = require("express"); //might not need here
+// const mysql = require("mysql"); //this is now in connection.js
+const connection = require("./config/connection.js");
 const exphbs = require("express-handlebars");
 
 // ______________________________________________________________________________
-// MYSQL - database connection
+// MYSQL - database connection -- now in connection.js- OK?
 // -----–––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
-const connection = mysql.createConnection({
-  host: "localhost",
-  port: 3306,
-  user: "root",
-  password: "",
-  database: "burgers_db"
-});
+// const connection = mysql.createConnection({
+//   host: "localhost",
+//   port: 3306,
+//   user: "root",
+//   password: "",
+//   database: "burgers_db"
+// });
 
-connection.connect(function(err) {
-  if (err) {
-    console.error("error connecting: " + err.stack);
-    return;
-  }
+// connection.connect(function(err) {
+//   if (err) {
+//     console.error("error connecting: " + err.stack);
+//     return;
+//   }
 
-  console.log("connected as id " + connection.threadId);
-});
+//   console.log("connected as id " + connection.threadId);
+// });
 
 // ______________________________________________________________________________
 // EXPRESS - server setup
