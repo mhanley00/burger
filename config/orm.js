@@ -8,10 +8,8 @@
 //      * `updateOne()` // put, 
 
 //    * Export the ORM object in `module.exports`.
+var connection = require("../config/connection.js");
 
-// So far all I know is we will export it...
-//module.exports = ORM; //????
 
-//If we export this as ORM and require ORM elsewhere, do 
-// we get each function or need to export/import each 
-// separately??
+
+module.exports = orm; 
