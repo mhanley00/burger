@@ -8,8 +8,41 @@
 //      * `updateOne()` // put, 
 
 //    * Export the ORM object in `module.exports`.
-var connection = require("../config/connection.js");
+const connection = require("../config/connection.js");
 
+function addQuestionMarks(num){
+    //referencing cats example
+    let array = [];
+    for (let i =0; i<num; i++){
+        array.push(`?`);
+    }
+    return array.toString();
+}
 
+function objectSQL(object){
+    let value = object[key];
+    if(Object.hasOwnProperty.call(object, key)){
+        //hasOwnProperty returns whether the object called has that property
+        if(typeof value === `string` && value.indexOf(" ") >= 0){
+            value = `'  ${value}  '`;
+            //how would I write this in es6 ${value}?
+        }
+        array.push(`${key} = ${value}`);
+    }
+    return array.toString();
+}
+
+const orm = {
+    all: function(tableInput, cb){
+        //adding cd for callback so code waits for db
+        let queryString = `SELECT * FROM ${tableInput};`;
+        connection.query(queryString, function(err, res){
+            if(err){
+                throw err;
+            }
+            cb(res);
+        });
+    }
+};
 
 module.exports = orm; 

@@ -11,7 +11,7 @@ const routes = require("./controllers/burger_controller.js");
 // -----–––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
 const app = express();
 
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 3000;
 
 app.use(express.static("public")); //setting up our static server
 
