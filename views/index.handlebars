@@ -4,12 +4,17 @@
     <div> {{!-- left div --}}
         <h3>Ready to Eat</h3>
         {{#each burgers}} {{#unless devoured}}
-        <button data-id="{{this.id}}" class="eat-burger">Devour It😋</button>
+        <span>{{this.burger_name}}</span>
+        <form action="/burger/{{this.id}}" method="POST">
+            <input type="hidden" type="text" value={{this.id}}>
+        <button data-id="{{this.id}}" class="eat-burger" type="submit">Devour It😋</button></input>
+        </form>
         {{/unless}} {{/each}}
+        <br>
     </div>
     <div> {{!-- right div --}}
         <h3>Devoured</h3>
-        {{#each burger}} {{#if devoured}} {{/if}} {{/each}}
+        {{#each burgers}} {{#if devoured}}<span>{{this.burger_name}}</span> {{/if}} {{/each}}
     </div>
 </div>
 <div>

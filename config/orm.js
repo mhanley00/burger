@@ -45,4 +45,6 @@ const orm = {
     }
 };
 
+// console.log(orm.all(burgers));
+
 module.exports = orm; 

@@ -21,4 +21,12 @@ router.get("/", function(req,res){
     });
 });
 
+router.post("burgers/:id", function(req,res){
+    burger.update(req.params.id
+        console.log(hbsObject);
+        res.render("index", hbsObject);
+    });
+});
+
+
 module.exports = router;
