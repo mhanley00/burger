@@ -1,23 +1,34 @@
-<h2>Burgers🍔</h2>
+<div class="container">
+    <div class="not-devoured">
+                <h3>Ready to Eat🍔</h3>
+                {{#each burgers}} {{#unless devoured}}
+                <span>{{this.burger_name}}</span>
+                <form action="/burger/{{this.id}}" method="POST">
+                    <input type="hidden" type="text" value={{this.id}}>
+                    <button data-id="{{this.id}}" class="eat-burger" type="submit">Devour It😋</button>
+                    </input>
+                </form>
+                {{/unless}} {{/each}}
+                <br>
+            
+        </div> {{! end of row1}}
+        <div class="devoured"> {{!-- right div --}}
+            <h3>Devoured</h3>
+            {{#each burgers}} {{#if devoured}}
+            <span>{{this.burger_name}}</span> {{/if}} {{/each}}
+        </div>
+    </div> {{!-- end of left container --}}
 
-<div> {{!-- outer div --}}
-    <div> {{!-- left div --}}
-        <h3>Ready to Eat</h3>
-        {{#each burgers}} {{#unless devoured}}
-        <span>{{this.burger_name}}</span>
-        <form action="/burger/{{this.id}}" method="POST">
-            <input type="hidden" type="text" value={{this.id}}>
-        <button data-id="{{this.id}}" class="eat-burger" type="submit">Devour It😋</button></input>
-        </form>
-        {{/unless}} {{/each}}
+    <h3>Create Your Perfect Burger🍔</h3>
+    <form action="/burger/create" method="POST">
+        <input type="text" value={{this.id}} name="new-burger">
         <br>
-    </div>
-    <div> {{!-- right div --}}
-        <h3>Devoured</h3>
-        {{#each burgers}} {{#if devoured}}<span>{{this.burger_name}}</span> {{/if}} {{/each}}
-    </div>
-</div>
-<div>
-    <h3>Create Your Perfect Burger ❤️</h3>
-    
-</div>
+        <input type="radio" data-dev="false" name="devoured" value="false" checked> Not Devoured
+        <br>
+        <input type="radio" data-dev="true" name="devoured" value="true"> Devoured
+        <br>
+        <button data-id="{{this.id}}" class="add-burger" type="submit">Create😋</button>
+        </input>
+    </form>
+
+
