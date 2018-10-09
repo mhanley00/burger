@@ -1,13 +1,5 @@
-// * In the `orm.js` file, create the methods that will execute 
-// the necessary MySQL commands in the controllers. These are 
-//the methods you will need to use in order to retrieve and store 
-//data in your database.
 
-//      * `selectAll()` // get, select * from SQL/read
-//      * `insertOne()` // post, inserting to SQL
-//      * `updateOne()` // put, 
 
-//    * Export the ORM object in `module.exports`.
 const connection = require("../config/connection.js");
 
 function addQuestionMarks(num) {
@@ -33,6 +25,7 @@ function objectSQL(object) {
 }
 
 const orm = {
+    //* `selectAll()` // get, select * from SQL/read
     all: function (tableInput, cb) {
         //adding cd for callback so code waits for db
         let queryString = `SELECT * FROM ${tableInput};`;
@@ -43,6 +36,7 @@ const orm = {
             cb(res);
         });
     },
+    //  * `insertOne()` // post, inserting to SQL
     create: function (table, cols, vals, cb) {
         let queryString = `INSERT INTO ${table} (${cols.toString()}) VALUES ( ${addQuestionMarks(vals.length)})`;
         console.log(queryString);
@@ -53,6 +47,7 @@ const orm = {
             cb(result);
         });
     },
+   // * `updateOne()` // put, 
     update: function(table, objColVals, condition,cb){
         let queryString = `UPDATE ${table} SET ${objectSQL(objColVals)} WHERE ${condition}`;
         console.log(queryString);
